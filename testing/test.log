@@ -1,0 +1,43 @@
+2026-09-14 09:01:12 INFO Server started successfully
+2026-09-14 09:01:15 INFO User login successful
+2026-09-14 09:01:20 WARNING High memory usage detected
+2026-09-14 09:01:25 INFO Database connection established
+2026-09-14 09:01:31 ERROR Database connection failed
+2026-09-14 09:01:35 INFO Retrying database connection
+2026-09-14 09:01:40 ERROR Database connection failed
+2026-09-14 09:01:45 WARNING CPU usage above 80%
+2026-09-14 09:01:50 INFO Database connection restored
+2026-09-14 09:02:01 INFO Backup process started
+2026-09-14 09:02:10 ERROR Backup failed
+2026-09-14 09:02:15 WARNING Disk usage above 85%
+2026-09-14 09:02:20 INFO Backup process restarted
+2026-09-14 09:02:30 INFO Backup completed successfully
+2026-09-14 09:02:35 ERROR Request timeout occurred
+2026-09-14 09:02:40 INFO Request completed
+2026-09-14 09:02:45 WARNING Slow response detected
+2026-09-14 09:02:50 INFO Service health check passed
+2026-09-14 09:03:00 ERROR Service connection refused
+2026-09-14 09:03:10 INFO Service restarted successfully
+
+
+
+192.168.1.10 - - [14/Sep/2026:09:01:12] "GET /index.html HTTP/1.1" 200
+192.168.1.20 - - [14/Sep/2026:09:01:15] "GET /login HTTP/1.1" 200
+10.0.0.5 - - [14/Sep/2026:09:01:20] "POST /login HTTP/1.1" 200
+192.168.1.10 - - [14/Sep/2026:09:01:25] "GET /dashboard HTTP/1.1" 200
+172.16.0.8 - - [14/Sep/2026:09:01:30] "GET /api/users HTTP/1.1" 200
+192.168.1.20 - - [14/Sep/2026:09:01:35] "GET /products HTTP/1.1" 200
+192.168.1.10 - - [14/Sep/2026:09:01:40] "GET /about HTTP/1.1" 200
+10.0.0.5 - - [14/Sep/2026:09:01:45] "GET /api/data HTTP/1.1" 500
+192.168.1.20 - - [14/Sep/2026:09:01:50] "GET /index.html HTTP/1.1" 200
+192.168.1.10 - - [14/Sep/2026:09:01:55] "POST /login HTTP/1.1" 401
+172.16.0.8 - - [14/Sep/2026:09:02:00] "GET /home HTTP/1.1" 200
+192.168.1.20 - - [14/Sep/2026:09:02:05] "GET /dashboard HTTP/1.1" 200
+10.0.0.5 - - [14/Sep/2026:09:02:10] "GET /login HTTP/1.1" 200
+192.168.1.10 - - [14/Sep/2026:09:02:15] "GET /profile HTTP/1.1" 200
+192.168.1.20 - - [14/Sep/2026:09:02:20] "GET /settings HTTP/1.1" 200
+172.16.0.8 - - [14/Sep/2026:09:02:25] "GET /api/data HTTP/1.1" 200
+192.168.1.10 - - [14/Sep/2026:09:02:30] "GET /logout HTTP/1.1" 200
+10.0.0.5 - - [14/Sep/2026:09:02:35] "GET /products HTTP/1.1" 404
+192.168.1.20 - - [14/Sep/2026:09:02:40] "GET /about HTTP/1.1" 200
+192.168.1.10 - - [14/Sep/2026:09:02:45] "GET /index.html HTTP/1.1" 200

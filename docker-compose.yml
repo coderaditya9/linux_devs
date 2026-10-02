@@ -1,0 +1,9 @@
+services:
+  backup:
+    build: .
+    container_name: my-backup
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./src:/source
+      - ./backups:/backup

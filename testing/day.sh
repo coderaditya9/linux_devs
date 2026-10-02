@@ -84,6 +84,8 @@ echo "ip address            :       $ip"
 echo "consuming cpu process : $process"
 comment
 
+<<comment
+code for devops monitoring tool
 
 while true
 do
@@ -151,6 +153,7 @@ do
 			else
 				echo "$site : NOT REACHEABLE"
 				echo
+
 			fi
 		done
 
@@ -162,6 +165,146 @@ do
 		exit 0
 	fi
 done
+comment
+
+<<comment
+program for consuning 5 direcotry
+
+dir=(sudo du -h --max-depth=1 /var 2>/dev/null | sort -hr | head -n 6)
+echo "$dir"
+comment
 
 
+<<comment
+find larger file than 100 mb from home directory
+
+
+dir=(find /home -type f -size +100M -exec ls -lh {} \;)
+
+echo "$dir"
+comment
+
+
+<<comment
+program for find files
+
+
+file=(find /var/log -type f -mtime +7)
+echo "$file"
+comment
+
+
+<<comment
+display the last 20 line
+
+
+
+read -p "enter the log file name : " logfile
+
+if [ ! -f "$logfile" ]; then
+	echo "the log file not exist in the folder"
+	exit 0
+fi
+
+error=(grep -c "ERROR" "$logfile" | tail -5)
+echo "last 20 error line:"
+echo "$error"
+comment
+
+
+<<comment
+print service is running
+
+
+read -p "enter the service name : " service 
+
+if systemctl is-active --quiet "$service"
+then
+	echo "$service : running"
+else
+	echo "$service : not running"
+fi
+comment
+
+
+<<comment
+check ssh is running
+
+
+read -p "enter the service name : " service
+
+if systemctl status "$service"
+then
+	echo "$service : running"
+else
+	echo "$service : not running"
+fi
+comment
+
+
+<<comment
+check the website is reacheable 
+
+
+read -p "enter the website name : " site 
+
+if curl -Is "$site" > /dev/null 2>&1
+then
+	echo "$site : reacheable"
+else
+	echo "$site : not reacheable"
+fi
+comment
+
+
+<<comment
+check port 80 is listening on linux machine
+
+
+if sudo ss -tulnp | grep -q ":80"; then
+	echo "the port 80 is listening"
+else
+	echo "port 80 is not listening"
+fi
+comment
+
+
+<<comment
+find the most common ip address
+
+
+
+read -p "enter the logfile name : " logfile
+
+if [ ! -f "$logfile" ]; then
+	echo "the log file not exist in the system"
+	exit 0
+fi
+
+ip=$(awk '{print $1}' "$logfile" | sort | uniq -c | sort -nr | head -1)
+echo "$ip"
+comment
+
+
+<<comment
+create a backup of /var/log
+
+
+
+date=$(date +%Y-%m-%d)
+
+sudo tar -czf "var-log-backup-$date.tar.gz" /var/log
+
+echo "backup created successfully : var-log-backup-$date.tar.gz"
+comment
+
+
+<<comment
+find large file in /home
+comment
+
+
+file=$(find /home -type f -size +100M -exec ls -lh {} \;)
+
+echo "$file"
 
